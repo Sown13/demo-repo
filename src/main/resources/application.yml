@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: elasticsearch_demo
+  datasource:
+    url: ${DB_NAME}
+    username: ${USER}
+    password: ${PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      #      better use this ddl-auto: update than create-drop or create since it might be lost data
+      ddl-auto: update
+    show-sql: true
+  #  jwt:
+  #    secret: ${JWT_SECRET:strangerthing123}
+  #    expire: ${JWT_EXPIRE:999999999999999999999}
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+    mongodb:
+      uri: ${MONGODB_URI:mongodb+srv://laonetwork:laonetwork123@laonetwork.tf1crpf.mongodb.net/?retryWrites=true&w=majority&appName=LaoNetwork}
+      database: ${MONGODB_DATABASE:lao_network_demo}
+
+  elasticsearch:
+    uris: http://172.16.4.111:9200/
+    username: elastic
+    password: changeme
+
+
+server:
+  port: 8080
+
+
